@@ -8,7 +8,7 @@ body, html {
     font-family: 'Nunito', sans-serif; /* Set Nunito font */
 }
 
-/* Background video styling */
+/* Background video styling for home page */
 .background-video {
     position: absolute;
     top: 0;
@@ -26,6 +26,11 @@ body, html {
     filter: blur(3px);
 }
 
+/* Background for about, policy, and card pages */
+body.solid-background {
+    background-color: #ffefe2; /* Solid yellow background */
+}
+
 /* Header and logo styling */
 .header {
     position: absolute;
@@ -35,6 +40,19 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+/* Line below the logo */
+.header::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black; /* Line color */
+    position: absolute;
+    bottom: 0;
 }
 
 .logo-container {
@@ -47,12 +65,12 @@ body, html {
     height: 78px;
     width: 78px;
     border-radius: 50%;
-    margin: 0 30px;
     object-fit: cover;
+    margin: 0 30px;
 }
 
 .logo-text {
-    color: #ffbd59; /* Set text color */
+    color: black; /* Set text color to white */
     font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
@@ -60,7 +78,7 @@ body, html {
 
 /* Links styling */
 .link {
-    color: #ffbd59; /* Set text color */
+    color: black; /* Set text color */
     text-decoration: none;
     font-size: 22px;
     font-weight: bold;
@@ -74,22 +92,101 @@ body, html {
     margin-left: 30px;
 }
 
-/* Centered text styling */
-.centered-text {
+/* Card container for home page */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+/* Individual card styling */
+.card {
+    background-color: rgba(255, 239, 226, 0.8); /* White background with transparency */
+    color: #333; /* Dark text */
+    padding: 20px;
+    width: 250px;
+    height: 150px;
     text-align: center;
-    color: #ffbd59; /* Set text color */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.centered-text .large-text {
-    font-size: 80px; /* Increased "जल्द ही आ रहे हैं" size by 50% */
-    margin-bottom: 30px; /* Added more space between <p> and <h1> */
+.card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
 }
 
-.centered-text h1 {
-    font-size: 36px; /* Adjust as needed */
-    margin-top: 20px;
+/* Card titles */
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Centered text styling for about, policy, and card pages */
+.centered-text.solid-text {
+    color: white; /* Text color for solid background */
+}
+
+.centered-text.solid-text h1, .centered-text.solid-text p {
+    font-size: 36px; /* Match the home page text size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        top: 40%;
+    }
+
+    .card {
+        width: 80%; /* Full width on mobile */
+    }
+
+    .logo {
+        height: 50px;
+        width: 50px; /* Smaller logo for mobile */
+    }
+
+    .link {
+        font-size: 18px; /* Smaller link text */
+    }
+
+    .centered-text .large-text {
+        font-size: 30px; /* Smaller text for mobile */
+    }
+
+    .centered-text h1 {
+        font-size: 24px; /* Smaller heading for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column; /* Stack links and logo vertically on small screens */
+    }
+
+    .logo-container {
+        margin: 10px 0; /* Add space around the logo in stacked layout */
+    }
+
+    .link {
+        font-size: 16px; /* Even smaller text for very small screens */
+    }
+
+    .centered-text .large-text {
+        font-size: 24px; /* Further reduced for smaller devices */
+    }
+
+    .centered-text h1 {
+        font-size: 20px; /* Adjust the h1 size */
+    }
 }
